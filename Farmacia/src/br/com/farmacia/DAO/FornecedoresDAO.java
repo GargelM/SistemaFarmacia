@@ -2,7 +2,7 @@ package br.com.farmacia.DAO;
 
 import java.sql.Connection;
 import java.sql.SQLException;
-
+import java.util.ArrayList;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 
@@ -73,6 +73,24 @@ public class FornecedoresDAO {
 		
 		return  retorno;		
 	}
+	
+		public ArrayList<Fornecedores> listar()throws SQLException{
+			StringBuilder sql = new StringBuilder();
+			sql.append("SELECT codigo, descricao ");
+			sql.append("FROM fornecedores ");
+			sql.append("ORDER BY descricao ASC");
+			
+			Connection conexao = ConexaoFactory.conectar();
+			PreparedStatement comando = conexao.prepareStatement(sql.toString());
+			
+			
+			ResultSet resultado = comando.executeQuery();
+
+			ArrayList<Fornecedores>lista = new ArrayList<Fornecedores>();
+			while(resultado.next()) {
+				
+			}
+		}
 	
 	public static void main(String[] args) {
 		//Fornecedores f1 = new Fornecedores();
