@@ -73,6 +73,20 @@ public class FornecedoresDAO {
 
 		return retorno;
 	}
+	
+	public ArrayList<Fornecedores>buscarPorDescricao(Fornecedores f)throws SQLException{
+		StringBuilder sql = new StringBuilder();
+		sql.append("SELECT codigo, descricao ");
+		sql.append("FROM fornecedores ");
+		
+		sql.append("WHERE descricao LIKE = ? ");//like buscar por partes
+		sql.append("ORDER BY descricao ASC ");
+		
+		Connection conexao = ConexaoFactory.conectar();
+		PreparedStatement comando = conexao.prepareStatement(sql.toString());
+		
+		comando.setString(1, "%" + f.getDescricao() + "%");//%sempre q utilizar like usa % pois entende q pode buscar por parte
+	}
 
 	public ArrayList<Fornecedores> listar() throws SQLException {
 		StringBuilder sql = new StringBuilder();
