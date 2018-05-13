@@ -79,13 +79,24 @@ public class FornecedoresDAO {
 		sql.append("SELECT codigo, descricao ");
 		sql.append("FROM fornecedores ");
 		
-		sql.append("WHERE descricao LIKE = ? ");//like buscar por partes
+		sql.append("WHERE descricao LIKE ? ");//like buscar por partes
 		sql.append("ORDER BY descricao ASC ");
 		
 		Connection conexao = ConexaoFactory.conectar();
 		PreparedStatement comando = conexao.prepareStatement(sql.toString());
 		
 		comando.setString(1, "%" + f.getDescricao() + "%");//%sempre q utilizar like usa % pois entende q pode buscar por parte
+		
+		ResultSet resultado = comando.executeQuery();
+		
+		ArrayList<Fornecedores>lista = new ArrayList<Fornecedores>();
+		while(resultado.next()) {
+			Fornecedores item = new Fornecedores();
+			item.setCodigo(resultado.getLong("codigo"));
+			item.setDescricao(resultado.getString("descricao"));
+			lista.add(item);
+		}
+		return lista;
 	}
 
 	public ArrayList<Fornecedores> listar() throws SQLException {
@@ -129,7 +140,11 @@ public class FornecedoresDAO {
 		 * busca por codigo Fornecedores f5 = new Fornecedores(); f5.setCodigo(3);
 		 * Fornecedores f6 = new Fornecedores(); f6.setCodigo(9);
 		 */
+		
+		Fornecedores f7 = new Fornecedores();
+		f7.setDescricao("e");
 		FornecedoresDAO fdao = new FornecedoresDAO();
+		
 		try {
 			// fdao.salvar(f1);
 			// fdao.salvar(f2);
@@ -142,8 +157,8 @@ public class FornecedoresDAO {
 			 * + f7); System.out.println("buscado com sucesso resultado: " + f8);
 			 */
 
-			ArrayList<Fornecedores> lista = fdao.listar();
-
+			//ArrayList<Fornecedores> lista = fdao.listar();
+			ArrayList<Fornecedores> lista = fdao.buscarPorDescricao(f7);
 			for (Fornecedores f : lista) {
 				System.out.println("Resultado " + f);
 			}
