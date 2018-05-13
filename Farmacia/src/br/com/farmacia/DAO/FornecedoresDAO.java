@@ -36,7 +36,20 @@ public class FornecedoresDAO {
 		
 	}
 
-
+	
+	public void editar(Fornecedores f) throws SQLException{
+		StringBuilder sql = new StringBuilder();
+		sql.append("UPDATE fornecedores ");
+		sql.append("SET descricao  = ? ");
+		sql.append("WHERE codigo = ?");
+		
+		Connection conexao = ConexaoFactory.conectar();
+		PreparedStatement comando = conexao.prepareStatement(sql.toString());
+		comando.setString(1, f.getDescricao());
+		comando.setLong(2, f.getCodigo());
+		comando.executeUpdate();
+	}
+	
 	public static void main(String[] args) {
 		//Fornecedores f1 = new Fornecedores();
 		//f1.setDescricao("DESCRICAO 1");
@@ -44,15 +57,20 @@ public class FornecedoresDAO {
 		//Fornecedores f2 = new Fornecedores();
 		//f2.setDescricao("DESCICAO 2");
 		
-		Fornecedores f3 = new Fornecedores();
-		f3.setCodigo(2L);
+		//Fornecedores f3 = new Fornecedores();
+		//f3.setCodigo(2L);
+		
+		Fornecedores f4 = new Fornecedores();
+		f4.setCodigo(2);
+		f4.setDescricao("bbb");
 		
 		FornecedoresDAO fdao = new FornecedoresDAO();
 		try {
 			//fdao.salvar(f1);
 			//fdao.salvar(f2);
-			fdao.excluir(f3);
-			System.out.println("deledado com sucesso");
+			//fdao.excluir(f3);
+			fdao.editar(f4);
+			System.out.println("editado com sucesso");
 		} catch (SQLException e) {
 			System.out.println("Erro ao salvar");
 			e.printStackTrace();
