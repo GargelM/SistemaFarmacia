@@ -64,9 +64,14 @@ public class FornecedoresDAO {
 		ResultSet resultado = comando.executeQuery();
 		Fornecedores retorno = null;
 		
+		if(resultado.next()) {
+			retorno = new Fornecedores();
+			retorno.setCodigo(resultado.getLong("codigo"));//se ele encontrar algo passa a variavel de retorno
+														   // e guarda a informaçao que foi pega ali dentro que seria a informaçao q esta no resultado
+			retorno.setDescricao(resultado.getString("descricao"));
+		}
 		
-		
-		comando.executeUpdate();
+		return  retorno;		
 	}
 	
 	public static void main(String[] args) {
@@ -79,19 +84,29 @@ public class FornecedoresDAO {
 		//Fornecedores f3 = new Fornecedores();
 		//f3.setCodigo(2L);
 		
-		Fornecedores f4 = new Fornecedores();
+		/*Fornecedores f4 = new Fornecedores(); teste edicao
 		f4.setCodigo(2);
 		f4.setDescricao("bbb");
+		*/
+		
+		Fornecedores f5 = new Fornecedores();
+		f5.setCodigo(3);
+		Fornecedores f6 = new Fornecedores();
+		f6.setCodigo(9);
 		
 		FornecedoresDAO fdao = new FornecedoresDAO();
 		try {
 			//fdao.salvar(f1);
 			//fdao.salvar(f2);
 			//fdao.excluir(f3);
-			fdao.editar(f4);
-			System.out.println("editado com sucesso");
+			//fdao.editar(f4);
+			Fornecedores f7 = fdao.buscaPorCodigo(f5);
+			Fornecedores f8 = fdao.buscaPorCodigo(f6);
+			System.out.println("buscado com sucesso resultado: " + f7);
+			System.out.println("buscado com sucesso resultado: " + f8);
+			//System.out.println();
 		} catch (SQLException e) {
-			System.out.println("Erro ao salvar");
+			System.out.println("Erro ao buscar");
 			e.printStackTrace();
 		}
 		
