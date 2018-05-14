@@ -4,6 +4,7 @@ package br.com.farmacia.bean;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
+import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
 import javax.faces.model.ListDataModel;
@@ -25,10 +26,13 @@ public class FornecedoresBean {
 		this.itens = itens;
 	}
 	
+	//ira construir o q esta abaixo assim q a pagina for iniciada
+	@PostConstruct
 	public void prepararPesquisa() {
-		FornecedoresDAO fdao = new FornecedoresDAO();
+		
 		
 		try {
+			FornecedoresDAO fdao = new FornecedoresDAO();
 			ArrayList<Fornecedores>lista = fdao.listar();
 			itens = new ListDataModel<Fornecedores>(lista);//converter a variavel em datamodel
 		} catch (SQLException e) {
