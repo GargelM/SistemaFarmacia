@@ -5,30 +5,30 @@
 	template="/templates/modeloSistema.xhtml"
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:f="http://java.sun.com/jsf/core"
-	xmlns:p="http://primefaces.org/ui"
-	>
+	xmlns:p="http://primefaces.org/ui">
+
+
 
 	<ui:define name="menu">
 		<ui:include src="/includes/menu.xhtml" />
 	</ui:define>
 
 	<ui:define name="conteudo">
-		<p:dataTable emptyMessage="Nenhum registro encontrado!"
-		value="#{MBFornecedores.itens}"
-		var="item"
-		paginator="true"
-		rows="8"
-		
-		>
-			<p:column headerText="Codigo">
-				<h:outputText value="#{item.codigo}" />
-			</p:column>
+		<h:form>
+			<p:dataTable emptyMessage="Nenhum registro encontrado!"
+				value="#{MBFornecedores.itens}" var="item" paginator="true" rows="8">
+				<p:column headerText="Codigo" sortBy="#{item.codigo}"
+					filterBy="#{item.codigo}">
+					<h:outputText value="#{item.codigo}" />
+				</p:column>
 
-			<p:column headerText="Descricao">
-				<h:outputText value="#{item.descricao}" />
-			</p:column>
+				<p:column headerText="Descricao" sortBy="#{item.descricao}"
+					filterBy="#{item.descricao}">
+					<h:outputText value="#{item.descricao}" />
+				</p:column>
 
-		</p:dataTable>
+			</p:dataTable>
+		</h:form>
 	</ui:define>
 
 </ui:composition>
