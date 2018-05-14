@@ -13,7 +13,9 @@
 	</ui:define>
 
 	<ui:define name="conteudo">
-		<p:dataTable emptyMessage="Nenhum registro encontrado!">
+		<p:dataTable emptyMessage="Nenhum registro encontrado!"
+		value="#{MBFornecedores.itens} "
+		>
 			<p:column headerText="Codigo">
 
 			</p:column>
