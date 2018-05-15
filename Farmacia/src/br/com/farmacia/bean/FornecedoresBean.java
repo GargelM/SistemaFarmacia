@@ -16,6 +16,8 @@ import br.com.farmacia.domain.Fornecedores;
 @ViewScoped
 public class FornecedoresBean {
 
+	private Fornecedores fornecedores;
+	
 	private ListDataModel<Fornecedores>itens;
 //acessar forma externa o itens
 	public ListDataModel<Fornecedores> getItens() {
@@ -41,5 +43,22 @@ public class FornecedoresBean {
 		}
 		
 	}
-	
+
+	public Fornecedores getFornecedores() {
+		return fornecedores;
+	}
+
+	public void setFornecedores(Fornecedores fornecedores) {
+		this.fornecedores = fornecedores;
+	}
+	public void novo() {
+		
+		try {
+			FornecedoresDAO fdao = new FornecedoresDAO();
+			fdao.salvar(fornecedores);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
 }
