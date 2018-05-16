@@ -11,6 +11,7 @@ import javax.faces.model.ListDataModel;
 
 import br.com.farmacia.DAO.FornecedoresDAO;
 import br.com.farmacia.domain.Fornecedores;
+import br.com.farmacia.util.JSFUtil;
 
 @ManagedBean(name = "MBFornecedores") //uma forma de passar referencia  usara para chamar em vez de chamar fornecedoresbean 
 @ViewScoped
@@ -39,6 +40,7 @@ public class FornecedoresBean {
 			itens = new ListDataModel<Fornecedores>(lista);//converter a variavel em datamodel
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
+			JSFUtil.adicionarMensagemErro("ex.getMessage()");
 			e.printStackTrace();
 		}
 		
@@ -65,9 +67,10 @@ public class FornecedoresBean {
 			
 			ArrayList<Fornecedores>lista = fdao.listar();//atualizar a pagina
 			itens = new ListDataModel<Fornecedores>(lista);//esse codigo faz com que atualiza a lista  
-			
+			JSFUtil.adicionarMensagemSucesso("Salvo com sucesso");
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
+			JSFUtil.adicionarMensagemErro("ex.getMessage()");
 			e.printStackTrace();
 		}
 	}
