@@ -76,12 +76,23 @@ public class FornecedoresBean {
 	}
 	
 	
-	public void prepararExcluir() {
+	public void prepararexcluir() {
 		fornecedores = itens.getRowData();
 	}
 	
 	
-	public void Excluir() {
-		
+	public void excluir() {
+		try {
+			FornecedoresDAO fdao = new FornecedoresDAO();
+			fdao.excluir(fornecedores);
+			
+			ArrayList<Fornecedores>lista = fdao.listar();//atualizar a pagina
+			itens = new ListDataModel<Fornecedores>(lista);//esse codigo faz com que atualiza a lista  
+			JSFUtil.adicionarMensagemSucesso("Fornecedor excluido com sucesso");
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			JSFUtil.adicionarMensagemErro("Não é possivel excluir um fornecedor que tenha um produto associado!");
+			e.printStackTrace();
+		}
 	}
 }
