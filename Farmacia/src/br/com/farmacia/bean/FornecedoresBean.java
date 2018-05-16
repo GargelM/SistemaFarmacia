@@ -54,6 +54,7 @@ public class FornecedoresBean {
 	
 	public void prepararNovo() {
 		fornecedores = new Fornecedores();
+		
 	}
 	
 	public void novo() {
@@ -61,6 +62,10 @@ public class FornecedoresBean {
 		try {
 			FornecedoresDAO fdao = new FornecedoresDAO();
 			fdao.salvar(fornecedores);
+			
+			ArrayList<Fornecedores>lista = fdao.listar();//atualizar a pagina
+			itens = new ListDataModel<Fornecedores>(lista);//esse codigo faz com que atualiza a lista  
+			
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

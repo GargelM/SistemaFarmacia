@@ -14,8 +14,8 @@
 	</ui:define>
 
 	<ui:define name="conteudo">
-		<h:form>
-			<p:dataTable emptyMessage="Nenhum registro encontrado!"
+		<h:form id="frmfornecedores">
+			<p:dataTable id="tbfornecedores" emptyMessage="Nenhum registro encontrado!"
 				value="#{MBFornecedores.itens}" var="item" paginator="true" rows="8">
 
 				<f:facet name="header">Lista de Fornecedores</f:facet>
@@ -42,7 +42,7 @@
 					<h:inputText size="30" maxlength="50" value="#{MBFornecedores.fornecedores.descricao}" />
 				</h:panelGrid>
 				<h:panelGrid columns="2">
-					<p:commandButton value="Gravar" actionListener="#{MBFornecedores.novo}" oncomplete="PF('dlgforNovo').hide();"  />
+					<p:commandButton value="Gravar" actionListener="#{MBFornecedores.novo}" oncomplete="PF('dlgforNovo').hide();" update=":frmfornecedores:tbfornecedores" />
 					<p:commandButton value="Cancelar" onclick="PF('dlgforNovo').hide();"  />
 				</h:panelGrid>
 			</h:form>
