@@ -51,6 +51,11 @@ public class FornecedoresBean {
 	public void setFornecedores(Fornecedores fornecedores) {
 		this.fornecedores = fornecedores;
 	}
+	
+	public void prepararNovo() {
+		fornecedores = new Fornecedores();
+	}
+	
 	public void novo() {
 		
 		try {
