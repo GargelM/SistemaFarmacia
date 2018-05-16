@@ -74,4 +74,14 @@ public class FornecedoresBean {
 			e.printStackTrace();
 		}
 	}
+	
+	
+	public void prepararExcluir() {
+		fornecedores = itens.getRowData();
+	}
+	
+	
+	public void Excluir() {
+		
+	}
 }
