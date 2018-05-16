@@ -29,15 +29,15 @@
 					filterBy="#{item.descricao}">
 					<h:outputText value="#{item.descricao}" />
 				</p:column>
-				<f:facet name="footer"><p:commandButton value="Novo" actionListener="#{MBFornecedores.prepararNovo}" oncomplete="PF('dlgforNovo').show();" /></f:facet>
+				<f:facet name="footer"><p:commandButton value="Novo" actionListener="#{MBFornecedores.prepararNovo}" oncomplete="PF('dlgforNovo').show();" update=":frmforNovo:pnforNovo" /></f:facet>
 			</p:dataTable>
 		</h:form>
 
 		<p:dialog widgetVar="dlgforNovo" closable="false" draggable="false"
 			resizable="false" header="Cadastrar Fornecedor" modal="true" appendTo="@(body)">
 
-			<h:form>
-				<h:panelGrid columns="2">
+			<h:form id="frmforNovo">
+				<h:panelGrid columns="2" id="pnforNovo">
 					<p:outputLabel value="Descrição: " />
 					<h:inputText size="30" maxlength="50" value="#{MBFornecedores.fornecedores.descricao}" />
 				</h:panelGrid>
