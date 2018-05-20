@@ -18,15 +18,28 @@ import br.com.farmacia.util.JSFUtil;
 public class FornecedoresBean {
 
 	private Fornecedores fornecedores;
+	private ArrayList<Fornecedores>itens;
+	private ArrayList<Fornecedores>itensFiltrados;
 	
-	private ListDataModel<Fornecedores>itens;
-//acessar forma externa o itens
-	public ListDataModel<Fornecedores> getItens() {
-		return itens;
+	public Fornecedores getFornecedores() {
+		return fornecedores;
 	}
 
-	public void setItens(ListDataModel<Fornecedores> itens) {
+	public void setFornecedores(Fornecedores fornecedores) {
+		this.fornecedores = fornecedores;
+	}
+	
+	public ArrayList<Fornecedores> getItens() {
+		return itens;
+	}
+	public void setItens(ArrayList<Fornecedores> itens) {
 		this.itens = itens;
+	}
+	public ArrayList<Fornecedores> getItensFiltrados() {
+		return itensFiltrados;
+	}
+	public void setItensFiltrados(ArrayList<Fornecedores> itensFiltrados) {
+		this.itensFiltrados = itensFiltrados;
 	}
 	
 	//ira construir o q esta abaixo assim q a pagina for iniciada
@@ -36,8 +49,8 @@ public class FornecedoresBean {
 		
 		try {
 			FornecedoresDAO fdao = new FornecedoresDAO();
-			ArrayList<Fornecedores>lista = fdao.listar();
-			itens = new ListDataModel<Fornecedores>(lista);//converter a variavel em datamodel
+			itens = fdao.listar();
+			
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			JSFUtil.adicionarMensagemErro("ex.getMessage()");
@@ -46,13 +59,7 @@ public class FornecedoresBean {
 		
 	}
 
-	public Fornecedores getFornecedores() {
-		return fornecedores;
-	}
 
-	public void setFornecedores(Fornecedores fornecedores) {
-		this.fornecedores = fornecedores;
-	}
 	
 	public void prepararNovo() {
 		fornecedores = new Fornecedores();
@@ -65,8 +72,8 @@ public class FornecedoresBean {
 			FornecedoresDAO fdao = new FornecedoresDAO();
 			fdao.salvar(fornecedores);
 			
-			ArrayList<Fornecedores>lista = fdao.listar();//atualizar a pagina
-			itens = new ListDataModel<Fornecedores>(lista);//esse codigo faz com que atualiza a lista  
+			itens = fdao.listar();//atualizar a pagina
+			
 			JSFUtil.adicionarMensagemSucesso("Salvo com sucesso");
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
