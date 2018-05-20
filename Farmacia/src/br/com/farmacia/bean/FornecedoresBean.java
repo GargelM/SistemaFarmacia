@@ -7,7 +7,6 @@ import java.util.ArrayList;
 import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
-import javax.faces.model.ListDataModel;
 
 import br.com.farmacia.DAO.FornecedoresDAO;
 import br.com.farmacia.domain.Fornecedores;
@@ -81,20 +80,14 @@ public class FornecedoresBean {
 			e.printStackTrace();
 		}
 	}
-	
-	
-	public void prepararexcluir() {
-		fornecedores = itens.getRowData();
-	}
-	
+
 	
 	public void excluir() {
 		try {
 			FornecedoresDAO fdao = new FornecedoresDAO();
 			fdao.excluir(fornecedores);
 			
-			ArrayList<Fornecedores>lista = fdao.listar();//atualizar a pagina
-			itens = new ListDataModel<Fornecedores>(lista);//esse codigo faz com que atualiza a lista  
+			itens = fdao.listar();//atualizar a pagina			
 			JSFUtil.adicionarMensagemSucesso("Fornecedor excluido com sucesso");
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
@@ -103,17 +96,14 @@ public class FornecedoresBean {
 		}
 	}
 	
-	public void preparareditar() {
-		fornecedores = itens.getRowData();
-	}
+
 	
 	public void editar() {
 		try {
 			FornecedoresDAO fdao = new FornecedoresDAO();
 			fdao.editar(fornecedores);
 			
-			ArrayList<Fornecedores>lista = fdao.listar();
-			itens = new ListDataModel<Fornecedores>(lista);
+			itens = fdao.listar();
 			JSFUtil.adicionarMensagemSucesso("Fornecedor editado com sucesso");
 		} catch (SQLException e) {
 			// TODO: handle exception

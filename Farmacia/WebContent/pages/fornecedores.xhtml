@@ -17,7 +17,8 @@
 		<h:form id="frmfornecedores">
 			<p:dataTable id="tbfornecedores"
 				emptyMessage="Nenhum registro encontrado!"
-				value="#{MBFornecedores.itens}" var="item" paginator="true" rows="7">
+				value="#{MBFornecedores.itens}" var="item" paginator="true" rows="7"
+				filteredValue="#{MBFornecedores.itensFiltrados}">
 
 				<f:facet name="header">Lista de Fornecedores</f:facet>
 
@@ -33,14 +34,18 @@
 
 				<p:column headerText="Opções">
 					<p:commandButton icon="ui-icon-trash"
-						actionListener="#{MBFornecedores.prepararexcluir}"
 						oncomplete="PF('dlgforExcluir').show();"
-						update=":frmforExcluir:pnforExcluir" />
+						update=":frmforExcluir:pnforExcluir">
+						<f:setPropertyActionListener value="#{item}"
+							target="#{MBFornecedores.fornecedores}"></f:setPropertyActionListener>
+					</p:commandButton>
 
 					<p:commandButton icon="ui-icon-pencil"
-						actionListener="#{MBFornecedores.preparareditar}"
 						oncomplete="PF('dlgforEditar').show();"
-						update=":frmforEditar:pnforEditar" />
+						update=":frmforEditar:pnforEditar">
+						<f:setPropertyActionListener value="#{item}"
+							target="#{MBFornecedores.fornecedores}"></f:setPropertyActionListener>
+					</p:commandButton>
 
 				</p:column>
 
