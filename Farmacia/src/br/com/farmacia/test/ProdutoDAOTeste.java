@@ -1,10 +1,12 @@
 package br.com.farmacia.test;
 
 import java.sql.SQLException;
+import java.util.ArrayList;
 
-
+import org.junit.Ignore;
 import org.junit.Test;
 
+import com.mysql.fabric.xmlrpc.base.Array;
 
 import br.com.farmacia.DAO.ProdutoDAO;
 import br.com.farmacia.domain.Fornecedores;
@@ -13,6 +15,7 @@ import br.com.farmacia.domain.Produtos;
 
 public class ProdutoDAOTeste {
 	@Test
+	@Ignore
 	public void salvar() throws SQLException{
 
 		Produtos p1 = new Produtos();
@@ -28,5 +31,10 @@ public class ProdutoDAOTeste {
 
 		fdao.salvar(p1);
 
+	}
+	@Test
+	public void listar() throws SQLException{
+		ProdutoDAO fdao = new ProdutoDAO();
+		ArrayList<Produtos>lista = fdao.listar();
 	}
 }

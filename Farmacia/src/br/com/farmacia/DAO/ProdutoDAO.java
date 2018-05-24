@@ -43,14 +43,15 @@ public class ProdutoDAO {
 		ArrayList<Produtos> lista = new ArrayList<Produtos>();
 		while (resultado.next()) {
 			Fornecedores f = new Fornecedores();
-			f.setCodigo(resultado.getLong("codigo"));
-			f.setDescricao(resultado.getString("descricao"));
+			f.setCodigo(resultado.getLong("f.codigo"));
+			f.setDescricao(resultado.getString("f.descricao"));
 
 			Produtos p = new Produtos();
-			p.setCodigo(resultado.getLong("codigo"));
-			p.setDescricao(resultado.getString("descricao"));
-			p.setQuantidade(resultado.getLong(5));
-			p.setPreco(resultado.getDouble(5.99));
+			p.setCodigo(resultado.getLong("p.codigo"));
+			p.setDescricao(resultado.getString("p.descricao"));
+			p.setQuantidade(resultado.getLong("p.quantidade"));
+			p.setPreco(resultado.getDouble("p.preco"));
+			p.setFornecedores(f);
 			
 			lista.add(p);
 		}
