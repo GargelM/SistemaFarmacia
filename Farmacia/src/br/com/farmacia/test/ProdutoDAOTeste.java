@@ -50,6 +50,7 @@ public class ProdutoDAOTeste {
 	}
 	
 	@Test
+	@Ignore
 	public void excluir() throws SQLException{
 		Produtos p = new Produtos();
 		p.setCodigo(3L);
@@ -57,4 +58,18 @@ public class ProdutoDAOTeste {
 		ProdutoDAO dao = new ProdutoDAO();
 		dao.excluir(p);
 	}
+	
+	@Test
+	public void editar() throws SQLException{
+		Produtos p = new Produtos();
+		p.setCodigo(3L);
+		
+		ProdutoDAO dao = new ProdutoDAO();
+		dao.excluir(p);
+	}
 }
+
+
+
+
+
