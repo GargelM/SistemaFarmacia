@@ -74,8 +74,8 @@ public class ProdutoDAO {
 	public void editar(Produtos p) throws SQLException {
 		StringBuilder sql = new StringBuilder();
 		sql.append("UPDATE produtos ");
-		sql.append("SET descricao  = ?, preco = ?, quantidade = ?, fornecedor_codigo = ? ");
-		sql.append("WHERE codigo = ?, ?, ?, ? ");
+		sql.append("SET descricao  = ?, preco = ?, quantidade = ?, fornecedores_codigo = ? ");
+		sql.append("WHERE codigo = ? ");
 
 		Connection conexao = ConexaoFactory.conectar();
 		PreparedStatement comando = conexao.prepareStatement(sql.toString());

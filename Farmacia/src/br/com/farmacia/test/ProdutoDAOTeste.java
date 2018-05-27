@@ -62,10 +62,17 @@ public class ProdutoDAOTeste {
 	@Test
 	public void editar() throws SQLException{
 		Produtos p = new Produtos();
-		p.setCodigo(3L);
+		p.setCodigo(1L);
+		p.setDescricao("Cataflan");
+		p.setPreco(15.75);
+		p.setQuantidade(2L);
+		
+		Fornecedores f = new Fornecedores();
+		f.setCodigo(12);
+		p.setFornecedores(f);
 		
 		ProdutoDAO dao = new ProdutoDAO();
-		dao.excluir(p);
+		dao.editar(p);
 	}
 }
 
