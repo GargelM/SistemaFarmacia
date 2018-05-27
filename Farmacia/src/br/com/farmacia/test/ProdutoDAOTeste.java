@@ -36,5 +36,15 @@ public class ProdutoDAOTeste {
 	public void listar() throws SQLException{
 		ProdutoDAO fdao = new ProdutoDAO();
 		ArrayList<Produtos>lista = fdao.listar();
+		
+		for(Produtos p : lista) {
+			System.out.println("Codigo do Produto: " + p.getCodigo());
+			System.out.println("Descrição do Produto: " + p.getDescricao());
+			System.out.println("Preço do Produto: " + p.getPreco());
+			System.out.println("Quantidade do Produto: " + p.getQuantidade());
+			System.out.println("Codigo do Fornecedor: " + p.getFornecedores().getCodigo());
+			System.out.println("Descrição do Fornecedor: " + p.getFornecedores().getDescricao());
+			System.out.println("");
+		}
 	}
 }
