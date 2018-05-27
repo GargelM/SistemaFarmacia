@@ -33,6 +33,7 @@ public class ProdutoDAOTeste {
 
 	}
 	@Test
+	@Ignore
 	public void listar() throws SQLException{
 		ProdutoDAO fdao = new ProdutoDAO();
 		ArrayList<Produtos>lista = fdao.listar();
@@ -46,5 +47,14 @@ public class ProdutoDAOTeste {
 			System.out.println("Descrição do Fornecedor: " + p.getFornecedores().getDescricao());
 			System.out.println("");
 		}
+	}
+	
+	@Test
+	public void excluir() throws SQLException{
+		Produtos p = new Produtos();
+		p.setCodigo(3L);
+		
+		ProdutoDAO dao = new ProdutoDAO();
+		dao.excluir(p);
 	}
 }
