@@ -4,7 +4,7 @@ public class Fornecedores {
 	public Long getCodigo() {
 		return codigo;
 	}
-	public void setCodigo(long codigo) {
+	public void setCodigo(Long codigo) {
 		this.codigo = codigo;
 	}
 	public String getDescricao() {
