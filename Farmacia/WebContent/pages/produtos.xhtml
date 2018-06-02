@@ -59,8 +59,9 @@
 				</p:column>
 
 				<f:facet name="footer">
-					<p:commandButton value="Novo" oncomplete="PF('dlgproNovo').show();" 
-					actionListener="#{MBProduto.prepararNovo}" />
+					<p:commandButton value="Novo" oncomplete="PF('dlgproNovo').show();"
+						actionListener="#{MBProduto.prepararNovo}"
+						update=":frmproNovo:pnproNovo :msgGlobal"/>
 				</f:facet>
 			</p:dataTable>
 		</h:form>
@@ -68,8 +69,7 @@
 
 		<p:dialog widgetVar="dlgproNovo" closable="false" draggable="false"
 			resizable="false" header="Cadastrar Produtos" modal="true"
-			appendTo="@(body)"
-			update=":frmproNovo:pnproNovo :msgGlobal" >
+			appendTo="@(body)">
 
 			<h:form id="frmproNovo">
 				<h:panelGrid columns="2" id="pnproNovo">
@@ -90,7 +90,7 @@
 					<p:selectOneMenu value="#{MBProduto.produtos.fornecedores.codigo}">
 						<f:selectItem itemValue="" itemLabel="Selecione um Fornecedor" />
 						<f:selectItems value="#{MBProduto.comboFornecedores}" var="item"
-							itemValue="item.codigo" itemLabel="item.descricao">
+							itemValue="#{item.codigo}" itemLabel="#{item.descricao}">
 
 						</f:selectItems>
 					</p:selectOneMenu>

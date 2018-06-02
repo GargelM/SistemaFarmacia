@@ -35,6 +35,6 @@ public class Produtos {
 	private String descricao;
 	private Long quantidade;
 	private Double preco;
-	private Fornecedores fornecedores; /*chave estrangeira entao ele pega os dados da classe Fornecedores e cria objeto*/
+	private Fornecedores fornecedores = new Fornecedores(); /*chave estrangeira entao ele pega os dados da classe Fornecedores e cria objeto*/
 	
 }

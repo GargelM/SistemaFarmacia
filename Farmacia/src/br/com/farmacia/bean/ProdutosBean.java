@@ -84,18 +84,19 @@ public class ProdutosBean {
 
 	}
 
-	/*
-	 * public void novo() {
-	 * 
-	 * try { ProdutoDAO pdao = new ProdutoDAO(); pdao.salvar(produtos);
-	 * 
-	 * itens = pdao.listar();//atualizar a pagina
-	 * 
-	 * JSFUtil.adicionarMensagemSucesso("Salvo com sucesso"); } catch (SQLException
-	 * e) { // TODO Auto-generated catch block
-	 * JSFUtil.adicionarMensagemErro("ex.getMessage()"); e.printStackTrace(); } }
-	 * 
-	 * 
+	
+	  public void novo() {
+	  
+	  try { ProdutoDAO pdao = new ProdutoDAO(); 
+	  pdao.salvar(produtos);
+	  
+	  itens = pdao.listar();//atualizar a pagina
+	  
+	  JSFUtil.adicionarMensagemSucesso("Produto Salvo com sucesso"); } catch (SQLException
+	  e) { // TODO Auto-generated catch block
+	  JSFUtil.adicionarMensagemErro("ex.getMessage()"); e.printStackTrace(); } }
+	  
+	  /*
 	 * public void excluir() { try { ProdutoDAO pdao = new ProdutoDAO();
 	 * pdao.excluir(produtos);
 	 * 
