@@ -59,7 +59,7 @@
 				</p:column>
 
 				<f:facet name="footer">
-					<p:commandButton value="Novo" oncomplete="PF('dlgproNovo').show();"/>
+					<p:commandButton value="Novo" oncomplete="PF('dlgproNovo').show();" />
 				</f:facet>
 			</p:dataTable>
 		</h:form>
@@ -74,9 +74,25 @@
 					<p:outputLabel value="Descrição: " />
 					<h:inputText size="30" maxlength="50"
 						value="#{MBProduto.produtos.descricao}" />
-					<p:outputLabel value="Valor " />
+
+					<p:outputLabel value="Preço: " />
 					<h:inputText size="15" maxlength="7"
 						value="#{MBProduto.produtos.preco}" />
+
+					<p:outputLabel value="Quantidade: " />
+					<h:inputText size="15" maxlength="7"
+						value="#{MBProduto.produtos.quantidade}" />
+
+					
+					<p:outputLabel value="Fornecedor: " />
+					<p:selectOneMenu value="#{MBProduto.produtos.fornecedores.codigo}">
+						<f:selectItems value="#{MBProduto.comboFornecedores}"
+						var="item" itemValue="item.codigo" itemLabel="item.descricao"
+						>
+							
+						</f:selectItems>
+					</p:selectOneMenu>
+					
 				</h:panelGrid>
 				<h:panelGrid columns="2">
 					<p:commandButton value="Gravar" />
