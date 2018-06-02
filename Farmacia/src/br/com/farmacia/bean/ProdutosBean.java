@@ -72,7 +72,15 @@ public class ProdutosBean {
 	}
 
 	public void prepararNovo() {
-		produtos = new Produtos();
+		
+		try {
+			produtos = new Produtos();
+			FornecedoresDAO fdao = new FornecedoresDAO();
+			comboFornecedores = fdao.listar();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			JSFUtil.adicionarMensagemErro("ex.getMessage()");
+		}
 
 	}
 
