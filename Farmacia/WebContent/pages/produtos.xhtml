@@ -115,7 +115,7 @@
 					<p:commandButton value="Gravar" actionListener="#{MBProduto.novo}"
 						oncomplete="verificar(xhr, status, args, 'dlgpreNovo', 'tbProdutos')"
 						update=":frmProdutos:tbProdutos :msgGlobal" />
-					<p:commandButton value="Cancelar"
+					<p:commandButton value="Cancelar" process="@this"
 						onclick="PF('dlgproNovo').hide();" />
 				</h:panelGrid>
 			</h:form>
@@ -167,7 +167,7 @@
 					<h:outputText value="Quantidade" />
 					<h:inputText value="#{MBProduto.produtos.quantidade}"
 						required="true" requiredMessage="Campo Quantidade é obrigatorio!" />
-					
+
 					<h:outputText value="Fornecedor" />
 					<p:selectOneMenu value="#{MBProduto.produtos.fornecedores.codigo}"
 						filter="true">
@@ -176,7 +176,7 @@
 							required="true" requiredMessage="Campo Fornecedor é obrigatorio!">
 						</f:selectItems>
 					</p:selectOneMenu>
-					
+
 				</h:panelGrid>
 
 				<h:panelGrid columns="2">
@@ -184,7 +184,7 @@
 						actionListener="#{MBProduto.editar}"
 						oncomplete="verificar(xhr, status, args, 'dlgproEditar', 'tbProdutos')"
 						update=":frmProdutos:tbProdutos :msgGlobal" />
-					<p:commandButton value="Cancelar"
+					<p:commandButton value="Cancelar" process="@this"
 						onclick="PF('dlgproEditar').hide();" />
 				</h:panelGrid>
 			</h:form>

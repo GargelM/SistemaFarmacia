@@ -73,7 +73,7 @@
 						actionListener="#{MBFornecedores.novo}"
 						oncomplete="verificar(xhr, status, args, 'dlgforNovo', 'tbfornecedores')"
 						update=":frmfornecedores:tbfornecedores :msgGlobal" />
-					<p:commandButton value="Cancelar"
+					<p:commandButton value="Cancelar" process="@this"
 						onclick="PF('dlgforNovo').hide();" />
 				</h:panelGrid>
 			</h:form>
@@ -120,7 +120,7 @@
 						actionListener="#{MBFornecedores.editar}"
 						oncomplete="verificar(xhr, status, args, 'dlgforEditar', 'tbfornecedores')"
 						update=":frmfornecedores:tbfornecedores :msgGlobal" />
-					<p:commandButton value="Cancelar"
+					<p:commandButton value="Cancelar" process="@this"
 						onclick="PF('dlgforEditar').hide();" />
 				</h:panelGrid>
 			</h:form>
