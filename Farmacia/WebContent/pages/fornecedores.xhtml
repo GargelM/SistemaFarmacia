@@ -15,8 +15,7 @@
 
 	<ui:define name="conteudo">
 		<h:form id="frmfornecedores">
-			<p:dataTable id="tbfornecedores"
-				widgetVar="tabelaFornecedores"
+			<p:dataTable id="tbfornecedores" widgetVar="tabelaFornecedores"
 				emptyMessage="Nenhum registro encontrado!"
 				value="#{MBFornecedores.itens}" var="item" paginator="true" rows="7"
 				filteredValue="#{MBFornecedores.itensFiltrados}">
@@ -67,7 +66,7 @@
 				<h:panelGrid columns="2" id="pnforNovo">
 					<p:outputLabel value="Descrição: " />
 					<h:inputText size="30" maxlength="50"
-						value="#{MBFornecedores.fornecedores.descricao}" />
+						value="#{MBFornecedores.fornecedores.descricao}" required="true" requiredMessage="Campo descrição é obrigatorio!"/>
 				</h:panelGrid>
 				<h:panelGrid columns="2">
 					<p:commandButton value="Gravar"
