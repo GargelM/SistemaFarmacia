@@ -60,7 +60,8 @@
 
 					<p:commandButton icon="ui-icon-pencil"
 						oncomplete="PF('dlgproEditar').show();"
-						update=":frmproEditar:pnproEditar">
+						update=":frmproEditar:pnproEditar"
+						actionListener="#{MBProduto.prepararEditar}">
 						<f:setPropertyActionListener value="#{item}"
 							target="#{MBProduto.produtos}"></f:setPropertyActionListener>
 					</p:commandButton>
@@ -112,7 +113,7 @@
 				</h:panelGrid>
 				<h:panelGrid columns="2">
 					<p:commandButton value="Gravar" actionListener="#{MBProduto.novo}"
-						oncomplete="PF('dlgproNovo').hide(); PF('tabelaProdutos').clearFilters();"
+						oncomplete="verificar(xhr, status, args, 'dlgpreNovo', 'tbProdutos')"
 						update=":frmProdutos:tbProdutos :msgGlobal" />
 					<p:commandButton value="Cancelar"
 						onclick="PF('dlgproNovo').hide();" />
@@ -181,7 +182,7 @@
 				<h:panelGrid columns="2">
 					<p:commandButton value="Editar"
 						actionListener="#{MBProduto.editar}"
-						oncomplete="PF('dlgproEditar').hide(); PF('tabelaProdutos').clearFilters();"
+						oncomplete="verificar(xhr, status, args, 'dlgproEditar', 'tbProdutos')"
 						update=":frmProdutos:tbProdutos :msgGlobal" />
 					<p:commandButton value="Cancelar"
 						onclick="PF('dlgproEditar').hide();" />
