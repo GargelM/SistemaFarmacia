@@ -84,15 +84,18 @@
 				<h:panelGrid columns="2" id="pnproNovo">
 					<p:outputLabel value="Descrição: " />
 					<h:inputText size="30" maxlength="50"
-						value="#{MBProduto.produtos.descricao}" />
+						value="#{MBProduto.produtos.descricao}" required="true"
+						requiredMessage="Campo descrição é obrigatorio!" />
 
 					<p:outputLabel value="Preço: " />
 					<h:inputText size="15" maxlength="7"
-						value="#{MBProduto.produtos.preco}" />
+						value="#{MBProduto.produtos.preco}" required="true"
+						requiredMessage="Campo Preço é obrigatorio!" />
 
 					<p:outputLabel value="Quantidade: " />
 					<h:inputText size="15" maxlength="7"
-						value="#{MBProduto.produtos.quantidade}" />
+						value="#{MBProduto.produtos.quantidade}" required="true"
+						requiredMessage="Campo Quantidade é obrigatorio!" />
 
 
 					<p:outputLabel value="Fornecedor: " />
@@ -100,7 +103,8 @@
 						filter="true">
 						<f:selectItem itemValue="" itemLabel="Selecione um Fornecedor" />
 						<f:selectItems value="#{MBProduto.comboFornecedores}" var="item"
-							itemValue="#{item.codigo}" itemLabel="#{item.descricao}">
+							itemValue="#{item.codigo}" itemLabel="#{item.descricao}"
+							required="true" requiredMessage="Campo Fornecedor é obrigatorio!">
 
 						</f:selectItems>
 					</p:selectOneMenu>
@@ -154,13 +158,24 @@
 					<h:outputText value="Código" />
 					<h:outputText value="#{MBProduto.produtos.codigo}" />
 					<h:outputText value="Descricao" />
-					<h:inputText value="#{MBProduto.produtos.descricao}" />
+					<h:inputText value="#{MBProduto.produtos.descricao}"
+						required="true" requiredMessage="Campo descrição é obrigatorio!" />
 					<h:outputText value="Preço" />
-					<h:inputText value="#{MBProduto.produtos.preco}" />
+					<h:inputText value="#{MBProduto.produtos.preco}" required="true"
+						requiredMessage="Campo Preço é obrigatorio!" />
 					<h:outputText value="Quantidade" />
-					<h:inputText value="#{MBProduto.produtos.quantidade}" />
-					<h:outputText value="Fornecedore" />
-					<h:outputText value="#{MBProduto.produtos.fornecedores.descricao}" />
+					<h:inputText value="#{MBProduto.produtos.quantidade}"
+						required="true" requiredMessage="Campo Quantidade é obrigatorio!" />
+					
+					<h:outputText value="Fornecedor" />
+					<p:selectOneMenu value="#{MBProduto.produtos.fornecedores.codigo}"
+						filter="true">
+						<f:selectItems value="#{MBProduto.comboFornecedores}" var="item"
+							itemValue="#{item.codigo}" itemLabel="#{item.descricao}"
+							required="true" requiredMessage="Campo Fornecedor é obrigatorio!">
+						</f:selectItems>
+					</p:selectOneMenu>
+					
 				</h:panelGrid>
 
 				<h:panelGrid columns="2">
